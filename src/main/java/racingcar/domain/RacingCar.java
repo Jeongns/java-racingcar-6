@@ -5,6 +5,11 @@ public class RacingCar {
     private String name;
     private int distance;
 
+    public RacingCar(String name){
+        this.name = name;
+        this.distance = RacingGame.START_LINE;
+    }
+
     public void attemptForward(int chance) {
         if (isForward(chance))
             goForward();
@@ -16,11 +21,6 @@ public class RacingCar {
 
     public int getDistance() {
         return distance;
-    }
-
-    public RacingCar(String name, int distance) {
-        this.name = name;
-        this.distance = distance;
     }
 
     private boolean isForward(int chance) {
