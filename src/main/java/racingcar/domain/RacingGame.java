@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import racingcar.generator.NumberGenerator;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class RacingGame {
@@ -22,4 +23,24 @@ public class RacingGame {
             raceCarList.add(new RacingCar(racingCarName));
         }
     }
+
+    public void moveCarsForward() {
+        int number = numberGenerator.generate();
+        raceCarList.getRacingCarList().stream()
+                .forEach(racingCar -> racingCar.attemptForward(number));
+    }
+
+    public List<RacingCar> getWinners(){
+        int maxDistance = getMaxDistance();
+        return raceCarList.getRacingCarList().stream()
+                .filter(racingCar -> racingCar.getDistance() == maxDistance)
+                .toList();
+    }
+
+    private int getMaxDistance(){
+        return raceCarList.getRacingCarList().stream()
+                .max(Comparator.comparing(RacingCar::getDistance))
+                .get().getDistance();
+    }
 }
+
