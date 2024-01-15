@@ -25,19 +25,18 @@ public class RacingGame {
     }
 
     public void moveCarsForward() {
-        int number = numberGenerator.generate();
         raceCarList.getRacingCarList().stream()
-                .forEach(racingCar -> racingCar.attemptForward(number));
+                .forEach(racingCar -> racingCar.attemptForward(numberGenerator.generate()));
     }
 
-    public List<RacingCar> getWinners(){
+    public List<RacingCar> getWinners() {
         int maxDistance = getMaxDistance();
         return raceCarList.getRacingCarList().stream()
                 .filter(racingCar -> racingCar.getDistance() == maxDistance)
                 .toList();
     }
 
-    private int getMaxDistance(){
+    private int getMaxDistance() {
         return raceCarList.getRacingCarList().stream()
                 .max(Comparator.comparing(RacingCar::getDistance))
                 .get().getDistance();
