@@ -29,6 +29,10 @@ public class RacingGame {
                 .forEach(racingCar -> racingCar.attemptForward(numberGenerator.generate()));
     }
 
+    public List<RacingCar> getCurrentStatus() {
+        return raceCarList.getRacingCarList();
+    }
+
     public List<RacingCar> getWinners() {
         int maxDistance = getMaxDistance();
         return raceCarList.getRacingCarList().stream()
