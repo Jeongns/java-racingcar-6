@@ -21,4 +21,8 @@ public class Reader {
     public int readNumber() {
         return Integer.parseInt(Console.readLine());
     }
+
+    public void close() {
+        Console.close();
+    }
 }
